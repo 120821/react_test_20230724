@@ -1,17 +1,17 @@
-// src/components/Page2.js
-
 import React from 'react';
 import { connect } from 'react-redux';
+import Countdown from './Countdown';
 
-const Page2 = ({ countdown }) => (
+const Page2 = ({ time }) => (
   <div>
-    <h1>This is Page 2</h1>
-    <p>Countdown: {countdown} seconds</p>
+  <h2>Page 2</h2>
+  <Countdown />
+  <p>Time: {time}</p>
   </div>
 );
 
 const mapStateToProps = (state) => ({
-  countdown: state.timer.countdown,
+  time: state.timer.time,
 });
 
 export default connect(mapStateToProps)(Page2);

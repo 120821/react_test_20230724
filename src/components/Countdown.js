@@ -1,26 +1,40 @@
-// src/components/Countdown.js
-
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import { startCountdown, stopCountdown, setTime } from '../actions';
 
-const Countdown = ({ countdown, decrementCountdown }) => {
+const Countdown = ({ countdown, time, startCountdown, stopCountdown, setTime }) => {
+  const [timer, setTimer] = useState(countdown);
+
   useEffect(() => {
-    const timer = setInterval(() => {
-      decrementCountdown();
+    const interval = setInterval(() => {
+      if (timer > 0) {
+        setTimer((t) => t - 1);
+        setTime(timer - 1);
+      }
     }, 1000);
 
-    return () => clearInterval(timer);
-  }, [decrementCountdown]);
+    return () => {
+      clearInterval(interval);
+      stopCountdown();
+    };
+  }, [timer, setTime, stopCountdown]);
 
-  return <div>{countdown} seconds left</div>;
+  return (
+    <div>
+      <h1>Countdown: {timer} seconds</h1>
+    </div>
+  );
 };
 
 const mapStateToProps = (state) => ({
   countdown: state.timer.countdown,
+  time: state.timer.time,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  decrementCountdown: () => dispatch({ type: 'DECREMENT_COUNTDOWN' }),
-});
+const mapDispatchToProps = {
+  startCountdown,
+  stopCountdown,
+  setTime,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Countdown);
