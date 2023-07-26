@@ -1,23 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { startCountdown, stopCountdown, setTime } from '../actions';
 
-const Countdown = ({ countdown, time, startCountdown, stopCountdown, setTime }) => {
+const Countdown = () => {
+  const dispatch = useDispatch();
+  const countdown = useSelector((state) => state.timer.countdown);
+  const time = useSelector((state) => state.timer.time);
   const [timer, setTimer] = useState(countdown);
 
   useEffect(() => {
     const interval = setInterval(() => {
       if (timer > 0) {
         setTimer((t) => t - 1);
-        setTime(timer - 1);
+        dispatch(setTime(timer - 1));
       }
     }, 1000);
 
     return () => {
       clearInterval(interval);
-      stopCountdown();
+      dispatch(stopCountdown());
     };
-  }, [timer, setTime, stopCountdown]);
+  }, [timer, dispatch]);
 
   return (
     <div>
@@ -26,15 +29,4 @@ const Countdown = ({ countdown, time, startCountdown, stopCountdown, setTime }) 
   );
 };
 
-const mapStateToProps = (state) => ({
-  countdown: state.timer.countdown,
-  time: state.timer.time,
-});
-
-const mapDispatchToProps = {
-  startCountdown,
-  stopCountdown,
-  setTime,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Countdown);
+export default Countdown;

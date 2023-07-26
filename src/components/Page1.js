@@ -1,17 +1,35 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import Countdown from './Countdown';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-const Page1 = ({ time }) => (
-  <div>
-    <h1>Page 1</h1>
-    <Countdown />
-    <p>Time: {time}</p>
-  </div>
-);
+class Page1 extends Component {
+  constructor(props) {
+    super(props);
 
-const mapStateToProps = (state) => ({
-  time: state.timer.time,
-});
+    this.state = {
+      timer: props.timer,
+    };
+  }
 
-export default connect(mapStateToProps)(Page1);
+  static getDerivedStateFromProps(props, state) {
+    if (props.timer !== state.timer) {
+      return { timer: props.timer };
+    }
+
+    return null;
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Page 1</h1>
+        <h2>Timer: {this.state.timer}</h2>
+      </div>
+    );
+  }
+}
+
+Page1.propTypes = {
+  timer: PropTypes.number.isRequired,
+};
+
+export default Page1;
