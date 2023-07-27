@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { START_COUNTDOWN, STOP_COUNTDOWN, SET_TIME } from '../actions';
+//import { START_COUNTDOWN, STOP_COUNTDOWN, SET_TIME } from '../actions';
 
 const initialState = {
   countdown: false,

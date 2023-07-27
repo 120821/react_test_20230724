@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import { Link } from 'react-router-dom';
 import './App.css';
 import Countdown from './components/Countdown';
 
@@ -19,7 +20,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Link to='/page1'>page 1</Link>
         <Countdown />
+        <Link to='/page2'>page 2</Link>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
