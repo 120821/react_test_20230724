@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Countdown from './Countdown';
 
 class Page2 extends Component {
   constructor(props) {
@@ -22,6 +23,7 @@ class Page2 extends Component {
     return (
       <div>
         <h1>Page 2</h1>
+        <Countdown />
         <h2>Timer: {this.state.timer}</h2>
       </div>
     );
