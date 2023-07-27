@@ -60,6 +60,7 @@ ReactDOM.render(
         <Route path="/home" element={<Home />} />
         <Route path="/page1" element={<Page1 />} />
         <Route path="/page2" element={<Page2 />} />
+        <Route exact path="/" render={() => <Home count={this.state.count} />} />
         <Route exact path="/about" render={() => <About count={this.state.count} handleIncrement={this.handleIncrement} />} />
       </Routes>
     </BrowserRouter>

@@ -6,7 +6,7 @@ const Countdown = () => {
   const dispatch = useDispatch();
   const countdown = useSelector((state) => state.timer.countdown);
   const time = useSelector((state) => state.timer.time);
-  const [timer, setTimer] = useState(countdown);
+  const [timer, setTimer] = useState(60);
 
   useEffect(() => {
     const interval = setInterval(() => {
