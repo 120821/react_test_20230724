@@ -13,6 +13,7 @@ Promise 实例的 then() 方法最多接受两个参数：Promise 的已完成�
  pending ( 运行中)
 
 demo1:
+vim promise_then.js
 ```
 const promise1 = new Promise((resolve, reject) => {
   resolve('Success!');
@@ -23,6 +24,10 @@ promise1.then((value) => {
   // Expected output: "Success!"
 });
 ```
+运行:
+```
+node promise_then.js
+```
 输出：
 ```
 > "Success!"
@@ -30,6 +35,7 @@ promise1.then((value) => {
 
 
 demo2:
+vim promise_then_2.js
 
 ```
 let result = new Promise( (resolve, reject ) => {
@@ -44,8 +50,11 @@ let result = new Promise( (resolve, reject ) => {
 result.then( (temp) => {
   console.info("result : ", temp)
 })
+```
 
-
+运行:
+```
+node promise_then_2.js
 ```
 输出:
 
