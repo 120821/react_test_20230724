@@ -62,3 +62,8 @@ node promise_then_2.js
 sleep n ms...
 result :  200
 ```
+### axios
+如果使用axios, 需要安装依赖:
+```
+npm install axios
+```
